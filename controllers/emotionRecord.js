@@ -20,10 +20,7 @@ exports.addRecord = async (req, res) => {
 
   const color_id_obj = new mongoose.Types.ObjectId(color_id);
   const tag_ids_obj = tag_ids.map((tag) => new mongoose.Types.ObjectId(tag));
-  const conv_datetime = new Date(datetime).toLocaleString("en", {
-    timeZone: "Asia/Jakarta",
-  });
-  const final_datetime = new Date(conv_datetime);
+  const final_datetime = new Date(datetime);
 
   try {
     const user = await UserModel.findOne({ email: email });
