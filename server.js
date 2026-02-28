@@ -21,7 +21,7 @@ app.use(bodyParser.json({ limit: "20mb" }));
 
 app.use(
   cors({
-    origin: "http://localhost:5173", //frontend url
+    origin: process.env.CLIENT_PATH, //frontend url
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true, 
   })
@@ -38,7 +38,7 @@ readdirSync("./routes").forEach((route) => {
 });
 
 //Start server
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
