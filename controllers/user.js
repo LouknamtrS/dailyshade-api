@@ -62,11 +62,11 @@ exports.updateProfile = async (req, res) => {
       return res.status(404).json({ log: "ไม่พบผู้ใช้นี้ในระบบ" });
     }
 
-    const userFromUserName = await UserModel.findOne({ username: username });
+    const userFromUserName = await UserModel.findOneAndUpdate({ username: username });
 
-    if (userFromUserName) {
-      return res.status(400).json({ log: "username ถูกใช้ไปแล้ว" });
-    }
+    // if (userFromUserName) {
+    //   return res.status(400).json({ log: "username ถูกใช้ไปแล้ว" });
+    // }
 
     const updateUser = await UserModel.findOneAndUpdate(
       { email: auth_email },
